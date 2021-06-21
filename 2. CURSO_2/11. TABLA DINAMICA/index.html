@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    
+    <title> hello,world </title>
+  </head>
+
+  <body>
+    <div class="container my-5 text-center">
+      <button class="btn btn-danger w-100" onclick="traer()"> Obtener </button>
+      <div class="mt-5">
+
+        <table class="table">
+
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">NOMBRE</th>
+              <th scope="col">EMAIL</th>
+              <th scope="col">ESTATUS</th>
+            </tr>
+          </thead>
+
+          <tbody id="contenido">
+                        
+          </tbody>
+
+        </table>
+
+      </div>
+    </div>
+
+    <script >
+      var contenido = document.querySelector('#contenido')
+
+      function traer()
+      {
+        fetch('tabla.json')
+        .then( res => res.json())
+        .then( datos =>
+        {
+          console.log(datos);
+          tabla(datos)
+        })
+      }      
+
+      function tabla(datos)
+      {
+        //console.log(datos);
+        contenido.innerHTML = '';
+        for(let indice of datos)
+        {
+          //console.log(indice);
+          // ATENCION: Usar += para concatenar los datos y visualizar TODO
+          // --------------------------------------------------------------
+          contenido.innerHTML += 
+          ` 
+            <tr>
+              <th scope="row">${indice.id}</th>
+              <td>${indice.nombre}</td>
+              <td>${indice.email}</td>
+              <td>${indice.estado ? "Activo" : "Eliminado"}</td>
+            </tr>
+          `
+        }
+      }
+    </script>
+    
+
+  </body>
+</html>

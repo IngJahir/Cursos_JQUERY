@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    
+    <title> hello,world </title>
+  </head>
+
+  <body>
+    <div class="container my-5 text-center">
+      <button class="btn btn-danger w-100" onclick="traer()"> Obtener </button>
+      <div class="mt-5" id="contenido">
+        
+      </div>
+    </div>
+
+    <script >
+      var contenido = document.querySelector('#contenido')
+      function traer()
+      {
+        fetch('texto.txt')
+        .then( data => data.text())
+        .then( data => 
+          {
+            console.log(data);
+            contenido.innerHTML = `<p> ${data} </p>`
+          })
+
+        
+        
+      }
+    </script>
+    
+
+  </body>
+</html>

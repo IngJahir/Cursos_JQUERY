@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Funciones arrow</title>
+</head>
+<body>
+	<h1 id="saludo"> Ver resultados en consola</h1>
+	<h1 id="suma"> Resultado de la suma es: </h1>
+
+	
+	<script>
+		var saludoId = document.getElementById('saludo')
+		var sumaId 	 = document.getElementById('suma')
+
+		// Caso 1: Funcion creada con metodo clasico
+		// -----------------------------------------
+		//function saludar(nombre) 
+		//{
+		//	return 'Hola '+nombre;
+		//}
+				
+		//function sumar(num1,num2) 
+		//{
+		//	return (num1 + num2);
+		//}		
+
+		// Caso 2: Funcion creada con metodo Arrow
+		// ---------------------------------------
+		var saludar = nombre 	  => 'Hola ' + nombre;
+		var sumar   = (num1,num2) => num1 + num2;
+		var sumar2  = (num1,num2) => 
+		{
+			var num3 = 10;
+			return num1 + num2 + num3;
+		}
+
+		// Impresion
+		saludoId.innerHTML = saludar('Ignacio')
+		sumaId.innerHTML += sumar2(10,20) 
+
+	</script>
+</body>
+</html>
